@@ -7,17 +7,21 @@
 - I am also using the geolocation data to display the location city and country, though sometimes there are bugs involved
   - ex: I found that with IP address 1.1.1.1 it will say the location is on the west coast while the timezone is EST
 - The IP address input provides validation for IP address formats
-  - I would have liked to implement an input mask, but that would have required adding another package and that seemed excessive for 1 input field
 
 ## Development Notes
 
 - Total time taken was around 8 hours, taking into account the research into Bootstrap classes and settings to minimize custom css
 - Create React App was used to bootstrap the application
 - Since there was no need for a global state, I opted to use [React-Query](https://react-query-v3.tanstack.com/) instead of the more robust solution that Redux offers
-  - In a larger scale application I would probably choose to use the [Redux Toolkit](https://redux-toolkit.js.org/introduction/getting-started) with [RTK Query](https://redux-toolkit.js.org/rtk-query/overview) to replace React-Query
+  - In a larger scale application I would probably choose to use the [Redux Toolkit](https://redux-toolkit.js.org/introduction/getting-started) with [RTK Query](https://redux-toolkit.js.org/rtk-query/overview) to replace React-Query, and also use [Axios](https://axios-http.com/) for its cleaner syntax and backwards compatibility
 - TypeScript was heavily used to provide some level of self-documentation to the components
-- Since this is a rolling list of added locations I would have liked to add a feature to remove them but didn't feel like it was necessary for this
-- Most of the styling is directly using Bootstrap components without modification, it would have been fun but time-consuming to give the app a customized theme
+
+## Next Steps
+
+- Since this is a rolling list of added locations I would have liked to add a feature to remove them
+- Most of the styling is directly using Bootstrap components, it would have been fun to give the app a customized theme
+- Add unit testing with (react-testing-library)[https://github.com/testing-library/react-testing-library]
+- Instead of validating the IP address input, it might be more user friendly to implement a text mask
 
 ## Getting Started with Create React App
 
