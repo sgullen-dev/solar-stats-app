@@ -1,19 +1,19 @@
 // React
-import React from "react";
-import ReactDOM from "react-dom/client";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 
 // Third Party
-import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 // Internal
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
+import App from './App';
+import reportWebVitals from './reportWebVitals';
 
 // CSS
-import "./index.css";
+import './index.css';
 
 const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
+  document.getElementById('root') as HTMLElement
 );
 
 const queryClient: QueryClient = new QueryClient({

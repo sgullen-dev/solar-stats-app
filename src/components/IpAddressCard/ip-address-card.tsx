@@ -1,13 +1,12 @@
 // React
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from 'react';
 
 // Bootstrap
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 // Internal
-import IpAddressInput from "./ip-address-input";
-import GridCard from "./grid-card";
+import { IpAddressInput, GridCard } from 'components';
 
 interface IpAddressFormProps {
   onSubmit: (ipAddress: string) => void;
@@ -16,7 +15,7 @@ interface IpAddressFormProps {
 // Add location by IP address card
 function IpAddressCard(props: IpAddressFormProps) {
   const [validated, setValidated] = useState<boolean>(false);
-  const [ipAddress, setIpAddress] = useState<string>("");
+  const [ipAddress, setIpAddress] = useState<string>('');
 
   const handleIpInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const target: HTMLInputElement = e.target as HTMLInputElement;
@@ -29,7 +28,7 @@ function IpAddressCard(props: IpAddressFormProps) {
     if (form.checkValidity()) {
       props.onSubmit(ipAddress);
       // Reset the form and validation messages
-      setIpAddress("");
+      setIpAddress('');
       setValidated(false);
     } else {
       // Show validation messages
@@ -39,11 +38,18 @@ function IpAddressCard(props: IpAddressFormProps) {
 
   return (
     <GridCard title="Add Location">
-      <Form className="mt-2" noValidate validated={validated} onSubmit={onFormSubmit}>
+      <Form
+        className="mt-2"
+        noValidate
+        validated={validated}
+        onSubmit={onFormSubmit}
+      >
         <Form.Group>
           <IpAddressInput value={ipAddress} onChange={handleIpInputChange} />
         </Form.Group>
-        <Button className="mt-3" type="submit">Submit</Button>
+        <Button className="mt-3" type="submit">
+          Submit
+        </Button>
       </Form>
     </GridCard>
   );

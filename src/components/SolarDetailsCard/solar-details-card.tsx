@@ -1,17 +1,16 @@
 // React
-import React from "react";
+import React from 'react';
 
 // Bootstrap
-import Alert from "react-bootstrap/Alert";
-import Spinner from "react-bootstrap/Spinner";
-import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/Tabs";
+import Alert from 'react-bootstrap/Alert';
+import Spinner from 'react-bootstrap/Spinner';
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
 
 // Internal
-import { useGetGeolocation } from "../apis/use-get-geolocation";
-import { useGetSolarDetails } from "../apis/use-get-solar-details";
-import GridCard from "./grid-card";
-import SolarStatsComponent from "./solar-stats-component";
+import { useGetGeolocation } from 'apis/Geolocation/use-get-geolocation';
+import { useGetSolarData } from 'apis/SolarData/use-get-solar-data';
+import { GridCard, SolarDetails } from 'components';
 
 interface SolarDetailsProps {
   ipAddress: string;
@@ -26,17 +25,16 @@ function SolarDetailsCard(props: SolarDetailsProps) {
     isLoading: isGeoLoading,
   } = useGetGeolocation(props.ipAddress);
 
-  // Check whether geolocation data has come in to prevent dependent call
+  // Check whether geolocation data exists
   const locationData = geolocation?.data;
 
-  // Pass the longitude and latitude into the solar details request to get sunrise and sunset,
-  // when there is no locationData yet this request will not be made, so we can safely ignore
-  // the type check for locationData potentially being undefined
+  // This is locked into isLoading state until locationData is truthy
+  // Pass the longitude and latitude into the solar details request to get sunrise and sunset
   const {
-    data: solarDetails,
+    data: solarData,
     error: solarError,
     isLoading: isSolarLoading,
-  } = useGetSolarDetails(
+  } = useGetSolarData(
     props.ipAddress,
     locationData?.location?.longitude,
     locationData?.location?.latitude,
@@ -59,21 +57,23 @@ function SolarDetailsCard(props: SolarDetailsProps) {
 
   return (
     <GridCard
-      title={`${locationData!.location.city.name}, ${locationData!.location.country.name}`}
+      title={`${locationData!.location.city.name}, ${
+        locationData!.location.country.name
+      }`}
       subtitle={props.ipAddress}
     >
       <Tabs className="mt-3">
         <Tab eventKey="location" title="Location">
-          <SolarStatsComponent
-            solarDetails={solarDetails!}
+          <SolarDetails
+            solarData={solarData!}
             timezone={locationData!.timezone.id}
           />
         </Tab>
         <Tab eventKey="local" title="Local">
-          <SolarStatsComponent solarDetails={solarDetails!} />
+          <SolarDetails solarData={solarData!} />
         </Tab>
         <Tab eventKey="utc" title="UTC">
-          <SolarStatsComponent solarDetails={solarDetails!} timezone={"UTC"} />
+          <SolarDetails solarData={solarData!} timezone="UTC" />
         </Tab>
       </Tabs>
     </GridCard>

@@ -1,11 +1,11 @@
 // React
-import React from "react";
+import React from 'react';
 
 // Bootstrap
-import Card from "react-bootstrap/Card";
+import Card from 'react-bootstrap/Card';
 
 // CSS
-import "./grid-card.css";
+import './grid-card.css';
 
 interface SolarCardProps {
   title: string;

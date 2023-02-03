@@ -20,7 +20,7 @@
 
 - Since this is a rolling list of added locations I would have liked to add a feature to remove them
 - Most of the styling is directly using Bootstrap components, it would have been fun to give the app a customized theme
-- Add unit testing with [react-testing-library](https://github.com/testing-library/react-testing-library)
+- Add more unit testing with [react-testing-library](https://github.com/testing-library/react-testing-library)
 - Instead of validating the IP address input, it might be more user friendly to implement a text mask
 
 ## Getting Started with Create React App

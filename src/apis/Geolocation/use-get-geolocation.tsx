@@ -1,23 +1,26 @@
 // Third Party
-import { useQuery } from "react-query";
+import { useQuery } from 'react-query';
 
 // Internal
-import { GeolocationData } from "./types";
-import { ipBaseKey } from "./api-key";
+import GeolocationData from './geolocation-data.type';
+import { ipBaseKey } from './api-key';
+import { BasePath, GeolocationEP } from '../ep-config';
 
 // Custom React-Query hook for getting geolocation data from an ip address
 // ------
 // queryKey note: By using the ip address in the query key, we can avoid unnecessary duplicate
 // ip address requests by simply responding with cached data
 export const useGetGeolocation = (ipAddress: string) => {
+  const basePath: string = BasePath.Geolocation;
+  const endpoint: string = GeolocationEP.Info;
   return useQuery<GeolocationData, Error>(
     `geolocation-${ipAddress}`,
     async () => {
       const response = await fetch(
-        `https://api.ipbase.com/v2/info?apikey=${ipBaseKey}&ip=${ipAddress}`
+        `${basePath}${endpoint}?apikey=${ipBaseKey}&ip=${ipAddress}`
       );
       if (!response.ok) {
-        throw new Error("Request Failed", { cause: response.status });
+        throw new Error('Request Failed', { cause: response.status });
       }
       return response.json();
     },

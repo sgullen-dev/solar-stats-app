@@ -1,8 +1,8 @@
 // React
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent } from 'react';
 
 // Bootstrap
-import Form from "react-bootstrap/Form";
+import Form from 'react-bootstrap/Form';
 
 interface IpAddressInputProps {
   value: string;
@@ -21,7 +21,7 @@ function IpAddressInput(props: IpAddressInputProps) {
         type="text"
         onChange={props.onChange}
         value={props.value}
-        pattern={"^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)\\.?\\b){4}$"} // This pattern should match valid IP addresses
+        pattern={'^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)\\.?\\b){4}$'} // This pattern should match valid IP addresses
       />
     </>
   );

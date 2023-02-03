@@ -1,38 +1,38 @@
 // React
-import React from "react";
+import React from 'react';
 
 // Internal
-import { SolarStat } from "../types";
-import SunriseIcon from "../icons/sunrise.svg";
-import SunsetIcon from "../icons/sunset.svg";
-import TimeService from "../services/time-service";
+import { convertTimezone } from 'utils/time-utils';
+import { SolarStatisticType } from 'types';
+import SunriseIcon from 'icons/sunrise.svg';
+import SunsetIcon from 'icons/sunset.svg';
 
 // CSS
-import "./solar-stat-component.css";
+import './solar-statistic.css';
 
 interface SolarStatProps {
-  statistic: SolarStat;
+  statistic: SolarStatisticType;
   time: string;
   timezone?: string;
 }
 
 // Displays the solar statistic for either sunrise and sunset, formatted
 // to be displayed in the solar details component
-function SolarStatComponent(props: SolarStatProps) {
+function SolarStatistic(props: SolarStatProps) {
   return (
     <div className="d-flex flex-row align-items-center">
       <div className="solar-icon flex-grow-0">
-        {props.statistic === "sunrise" ? (
+        {props.statistic === SolarStatisticType.Sunrise ? (
           <img src={SunriseIcon} alt="Sunrise" />
         ) : (
           <img src={SunsetIcon} alt="Sunset" />
         )}
       </div>
       <div className="solar-stat flex-grow-1">
-        {TimeService.convertTimezone(props.time, props.timezone)}
+        {convertTimezone(props.time, props.timezone)}
       </div>
     </div>
   );
 }
 
-export default SolarStatComponent;
+export default SolarStatistic;

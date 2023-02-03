@@ -1,14 +1,13 @@
 // React
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 // Bootstrap
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 
 // Internal
-import IpAddressCard from "./components/ip-address-card";
-import SolarDetailsCard from "./components/solar-details-card";
+import { IpAddressCard, SolarDetailsCard } from 'components';
 
 function App() {
   const [ipAddressList, setIpAddressList] = useState<string[]>([]);

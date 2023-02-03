@@ -1,4 +1,4 @@
-export enum SolarStat {
-  sunrise = "sunrise",
-  sunset = "sunset",
+export enum SolarStatisticType {
+  Sunrise,
+  Sunset,
 }
